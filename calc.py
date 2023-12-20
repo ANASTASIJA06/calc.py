@@ -18,27 +18,39 @@ def celsius_to_fahrenheit(celsius):
 # saliec visus skaitļus pirms dota skaitļa (izmanto for)
 def sigma(tail):
     result = 0
+    for i in range(1,tail+1):
+        result += i
     return result
 
 # nokonvertē svaru uz tuvāko mērvienību - grams, kilograms, tonna (izmanto if)
 def weight(grams):
-    return str(grams) + "g"
+    if grams < 1000:
+        return(str(grams)+"g")
+    elif grams < 100000:
+        result = grams / 1000
+        return(str(int(result))+"kg")
+    elif grams < 1000000:
+        result=grams/100000
+        return(str(int(result))+"c")
+    elif grams >= 1000000:
+        result=grams/1000000
+        return(str(int(result))+"t")
 
-mode = str(input("Choose mode(mg; fc; cf; si; w): "))
+mode = str(input("Choose mode(Mg; Fc; Cf; Si; W): "))
 
-if mode == "mg":
+if mode == "Mg":
     megabyte = int(input("Enter megabytes amount: "))
     print(megabyte_to_megabit(megabyte))
-elif mode == "fc":
+elif mode == "Fc":
     litres = int(input("Enter liters amount: "))
     kilometers = int(input("Enter kilometres amount: "))
     print(fuel_consumption(litres, kilometers))
-elif mode == "cf":
+elif mode == "Cf":
     celsius = int(input("Enter celsius amount: "))
     print(celsius_to_fahrenheit(celsius))
-elif mode == "si":
+elif mode == "Si":
     tail = int(input("Enter tail: "))
     print(sigma(tail))
-elif mode == "w":
+elif mode == "W":
     grams = int(input("Enter garms amount: "))
     print(weight(grams))
